@@ -25,21 +25,62 @@ function validURL($url) {
 function inBedify($uri) {
   require 'QueryPath/QueryPath.php';
   $page = htmlqp($uri);
+  $uri_parts = parse_url($uri);
   // Check response code @todo
+  $base = $uri_parts['scheme'] . '://' . $uri_parts['host'];
 
+  // Convert relative CSS and JS to absolute.
+  foreach (qp($page, 'link') as $link) {
+    if (strpos($link->attr('href'), 'http') === FALSE) {
+      $link->attr('href', $base . $link->attr('href'));
+    }
+  }
+  foreach (qp($page, 'script') as $script) {
+    if (strpos($script->attr('src'), 'http') === FALSE) {
+      $script->attr('src', $base . $script->attr('src'));
+    }
+  }
+
+  // Rewrite same-domain URLs to run through InBedify.
+  foreach (qp($page, 'a') as $a) {
+    if (strpos($a->attr('href'), 'http') !== FALSE) {
+      // Only rewrite same-domain URLs.
+      $host = parse_url($a->attr('href'), PHP_URL_HOST);
+      //if (ltrim($host, '.') == ltrim($uri_parts['host'], '.')) { //@todo
+        $a->attr('href', 'http://inbedify.com/' . $a->attr('href'));
+      //}
+    }
+    else {
+      // Relative URL.
+      $a->attr('href', 'http://inbedify.com/' . $base . $a->attr('href'));
+    }
+  }
+
+  // InBedify!
   // Speed this up @todo
-  foreach (qp($page, 'h1 a') as $header) {
-    $header->append(' in Bed');
+  foreach (qp($page, 'h1') as $header) {
+    inBedElement($header);
   }
-  foreach (qp($page, 'h2 a') as $header) {
-    $header->append(' in Bed');
+  foreach (qp($page, 'h2') as $header) {
+    inBedElement($header);
   }
-  foreach (qp($page, 'h3 a') as $header) {
-    $header->append(' in Bed');
+  foreach (qp($page, 'h3') as $header) {
+    inBedElement($header);
   }
 
   print $page->html();
   exit;
+}
+
+function inBedElement($qp_element) {
+  // Check if text is in a child element.
+  if ($qp_element->is('a')) {
+    $qp_element->find('a');
+  }
+  //$text = $qp_element->text();
+  //$text = preg_replace('/(.*)([\!\?\.])$/', '$1 in Bed$2', $text);
+  //$qp_element->text($text);
+  $qp_element->append(' in Bed');
 }
 
 function frontPage() {
@@ -82,7 +123,7 @@ function frontPage() {
 <div>
 <form method="GET" name="inbedify" action="/">
   Read
-  <input type="text" name="q" id="domain_input" value="http://nytimes.com" onclick="clearDomainInput(this);">
+  <input type="text" name="q" id="domain_input" size="29" value="http://talkingpointsmemo.com" onclick="clearDomainInput(this);">
   <a href="#" onclick="formSubmit();">in bed</a>
   <input type="submit" style="display: none;">
 </form>
