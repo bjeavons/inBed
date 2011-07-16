@@ -9,11 +9,6 @@
 function getURL() {
   if (isset($_GET['q'])) {
     $domain = $_GET['q'];
-  }
-  elseif (isset($_POST['domain'])) {// && strpos($_POST['domain'], 'http') !== false) {
-    $domain = $_POST['domain'];
-  }
-  if (isset($domain)) {
     if (strpos($domain, 'http') === false) {
       $domain = 'http://' . $domain;
     }
@@ -156,6 +151,12 @@ function frontPage() {
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<script type="text/javascript">
+  function recordOutboundLink(link, category, action) {
+    _gat._getTrackerByName()._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100);
+  }
+</script>
 </head><!-- in bed -->
 <body>
 <h1>In Bed<span class="ify">ify</span></h1>
@@ -168,7 +169,7 @@ function frontPage() {
 </form>
 </div>
 <div class="footer">
-<p class="credits">Made by <a href="https://twitter.com/benswords">@benswords</a> and <a href="https://twitter.com/ezrabg">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
+<p class="credits">Made by <a href="https://twitter.com/benswords" onClick="recordOutboundLink(this, 'Outbound Links', 'example.com');return false;">@benswords</a> and <a href="https://twitter.com/ezrabg" onClick="recordOutboundLink(this, 'Outbound Links', 'example.com');return false;">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
 <p class="fineprint">This is a novelty service, no ownership over served content is implied &hellip; in bed.</p>
 </div> 
 </body><!-- in bed -->
