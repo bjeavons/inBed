@@ -164,7 +164,7 @@ function frontPage() {
 <form method="GET" name="inbedify" action="/">
   <span class="inbedit">You should read</span>
   <input type="text" name="q" class="domain" id="domain_input" value="talkingpointsmemo.com" onclick="clearDomainInput(this);">
-  <span class="inbedit"><a href="#" onclick="formSubmit();">in bed?</a></span>
+  <span class="inbedit"><a href="#" onclick="formSubmit();">in bed</a></span>
   <input type="submit" style="display: none;">
 </form>
 </div>
