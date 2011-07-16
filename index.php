@@ -162,7 +162,7 @@ function frontPage() {
 <h1>In Bed<span class="ify">ify</span></h1>
 <div id="content">
 <form method="GET" name="inbedify" action="/">
-  <span class="inbedit">Why don't you read</span>
+  <span class="inbedit">You should read</span>
   <input type="text" name="q" class="domain" id="domain_input" value="talkingpointsmemo.com" onclick="clearDomainInput(this);">
   <span class="inbedit"><a href="#" onclick="formSubmit();">in bed?</a></span>
   <input type="submit" style="display: none;">
