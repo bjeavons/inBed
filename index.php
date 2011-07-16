@@ -78,7 +78,7 @@ function inBedify($url) {
     }
     else {
       // Relative URL.
-      $a->attr('href', 'http://inbedify.com/' . $base . $a->attr('href'));
+      $a->attr('href', 'http://inbedify.com/' . $base . '/' . ltrim($a->attr('href'), '/'));
     }
   }
 
@@ -130,7 +130,9 @@ function frontPage() {
   .inbedit{font-weight:bold;}
   #content{clear:both;font-size:3em;margin:auto;}
   #domain_input{width:380px;}
-  .footer{padding-top:3em};
+  .footer{padding-top:3em;}
+  .credits{font-size:2em;}
+  .fineprint{font-size:1.5em;}
 </style>
 <script type="text/javascript">
   function clearDomainInput(e) {
@@ -167,8 +169,8 @@ function frontPage() {
 </form>
 </div>
 <div class="footer">
-<p>This is a novelty service, no ownership over served content is implied. &hellip; in bed</p>
-<p>Made by <a href="https://twitter.com/benswords">@benswords</a> and <a href="https://twitter.com/ezrabg">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
+<p class="credits">Made by <a href="https://twitter.com/benswords">@benswords</a> and <a href="https://twitter.com/ezrabg">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
+<p class="fineprint">This is a novelty service, no ownership over served content is implied &hellip; in bed.</p>
 </div> 
 </body><!-- in bed -->
 </html>
