@@ -29,13 +29,13 @@ function inBedify($uri) {
 
   // Speed this up @todo
   foreach (qp($page, 'h1 a') as $header) {
-    $header->append(' in bed');
+    $header->append(' in Bed');
   }
   foreach (qp($page, 'h2 a') as $header) {
-    $header->append(' in bed');
+    $header->append(' in Bed');
   }
   foreach (qp($page, 'h3 a') as $header) {
-    $header->append(' in bed');
+    $header->append(' in Bed');
   }
 
   print $page->html();
