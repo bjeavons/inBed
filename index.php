@@ -121,18 +121,17 @@ function frontPage() {
 <meta name="description" content="Meta descriptions in bed" />
 <style type="text/css">
   body{background-color:#fff;color:#333;font-family:Arial,Verdana,sans-serif;font-size:62.5%;margin:10% 5% 0 5%;text-align:center;}
-  a,a:visited,a:active{color:#0080ff;text-decoration:underline;}
-  a:hover{text-decoration:none;}
-  h1{font-size:5em;text-shadow: #999 5px 5px 8px;}
-  input[type=text]{border:1px solid #ccc;color:#ccc;font-size:1em;padding:4px 6px 4px 6px;}
-  .ify{font-style:italic;font-size:1em;}
-  .domain{font-weight:bold;}
   .inbedit{font-weight:bold;}
+  a,a:visited,a:active{color:#0080ff;text-decoration:underline;font-weight:bold;}
+  a:hover{text-decoration:none;font-weight:bold;}
+  h1{font-size:5em;text-shadow: #999 5px 5px 8px;}
+  input[type=text]{border:1px solid #ccc;font-size:1em;padding:4px 6px 4px 6px;}
+  .ify{font-style:italic;font-size:1em;}
   #content{clear:both;font-size:3em;margin:auto;}
   #domain_input{width:380px;}
   .footer{padding-top:3em;}
-  .credits{font-size:2em;}
-  .fineprint{font-size:1.5em;}
+  .credits{font-size:1.8em;}
+  .fineprint{font-size:1.2em;}
 </style>
 <script type="text/javascript">
   function clearDomainInput(e) {
@@ -162,7 +161,7 @@ function frontPage() {
 <h1>In Bed<span class="ify">ify</span></h1>
 <div id="content">
 <form method="GET" name="inbedify" action="/">
-  <span class="inbedify">Why don't you read</span>
+  <span class="inbedit">Why don't you read</span>
   <input type="text" name="q" class="domain" id="domain_input" value="talkingpointsmemo.com" onclick="clearDomainInput(this);">
   <span class="inbedit"><a href="#" onclick="formSubmit();">in bed?</a></span>
   <input type="submit" style="display: none;">
