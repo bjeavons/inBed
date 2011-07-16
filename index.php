@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * InBedify
+ *
+ * Copyright (C) 2011 Ezra Barnett Gildesgame & Benjamin Jeavons
+ */
+
 function getURL() {
   if (isset($_GET['q']) && strpos($_GET['q'], 'http') !== false) {
     list($scheme, $url) = explode(':/', $_GET['q']);
@@ -19,7 +25,9 @@ function validURL($url) {
 function inBedify($uri) {
   require 'QueryPath/QueryPath.php';
   $page = htmlqp($uri);
+  // Check response code @todo
 
+  // Speed this up @todo
   foreach (qp($page, 'h1 a') as $header) {
     $header->append(' in Bed');
   }
@@ -37,7 +45,7 @@ function inBedify($uri) {
 function frontPage() {
   print <<<eof
 <!doctype html> 
-<html lang="en" dir="ltr"> 
+<html lang="en" dir="ltr"><!-- in bed -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>In Bedify</title> 
@@ -57,7 +65,7 @@ function frontPage() {
     return false;
   }
 </script>
-</head>
+</head><!-- in bed -->
 <body>
 <h1>In Bedify</h1>
 <div>
@@ -70,8 +78,8 @@ function frontPage() {
 </div>
 <div>
 Made by <a href="https://twitter.com/benswords">@benswords</a> and <a href="https://twitter.com/ezrabg">@ezrabg</a> &hellip; not in bed.
-</div>
-</body>
+</div> 
+</body><!-- in bed -->
 </html>
 eof;
   exit;
