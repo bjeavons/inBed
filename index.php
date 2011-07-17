@@ -169,7 +169,7 @@ function frontPage() {
 </form>
 </div>
 <div class="footer">
-<p class="credits">Made by <a href="https://twitter.com/benswords" onClick="recordOutboundLink(this, 'Outbound Links', 'example.com');return false;">@benswords</a> and <a href="https://twitter.com/ezrabg" onClick="recordOutboundLink(this, 'Outbound Links', 'example.com');return false;">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
+<p class="credits">Made by <a href="https://twitter.com/benswords" onClick="recordOutboundLink(this, 'Outbound Links', 'twitter.com');return false;">@benswords</a> and <a href="https://twitter.com/ezrabg" onClick="recordOutboundLink(this, 'Outbound Links', 'twitter.com');return false;">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
 <p class="fineprint">This is a novelty service, no ownership over served content is implied &hellip; in bed.</p>
 </div> 
 </body><!-- in bed -->
