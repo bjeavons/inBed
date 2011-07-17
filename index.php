@@ -124,9 +124,13 @@ function frontPage() {
   .ify{font-style:italic;font-size:1em;}
   #content{clear:both;font-size:3em;margin:auto;}
   #domain_input{width:380px;}
-  .footer{padding-top:3em;}
+  .cta{font-size:0.6em}
+  .footer{clear:both;padding-top:1em;}
   .credits{font-size:1.8em;}
   .fineprint{font-size:1.2em;}
+  .share{width:300px;margin-left:auto;margin-right:auto;margin-top:3em;}
+  .share-button{float:left;}
+  .fb iframe{text-align:center;}
 </style>
 <script type="text/javascript">
   function clearDomainInput(e) {
@@ -164,9 +168,14 @@ function frontPage() {
 <form method="GET" name="inbedify" action="/">
   <span class="inbedit">You should read</span>
   <input type="text" name="q" class="domain" id="domain_input" value="talkingpointsmemo.com" onclick="clearDomainInput(this);">
-  <span class="inbedit"><a href="#" onclick="formSubmit();">in bed</a></span>
+  <span class="inbedit"><a href="#" onclick="formSubmit();">in bed</a>.</span>
   <input type="submit" style="display: none;">
 </form>
+<p class="cta">Type in any address to InBedify!</p>
+</div>
+<div class="share">
+<div class="share-button tw"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://inbedify.com" data-text="&quot;in bed&quot; is not just for fortune cookies anymore: " data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+<div class="share-button fb"><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://inbedify.com" send="true" layout="button_count" width="100" show_faces="false" font=""></fb:like></div>
 </div>
 <div class="footer">
 <p class="credits">Made by <a href="https://twitter.com/benswords" onClick="recordOutboundLink(this, 'Outbound Links', 'twitter.com');return false;">@benswords</a> and <a href="https://twitter.com/ezrabg" onClick="recordOutboundLink(this, 'Outbound Links', 'twitter.com');return false;">@ezrabg</a> &hellip; <em>not</em> in bed.</p>
