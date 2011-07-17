@@ -109,10 +109,10 @@ function frontPage() {
 <!doctype html> 
 <html lang="en" dir="ltr"><!-- in bed -->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title>In Bedify</title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="Meta keywords in bed" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>InBedify.com : Add &quot;in bed&quot; to any website</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Meta keywords in bed" />
 <meta name="description" content="Meta descriptions in bed" />
 <style type="text/css">
   body{background-color:#fff;color:#333;font-family:Arial,Verdana,sans-serif;font-size:62.5%;margin:10% 5% 0 5%;text-align:center;}
