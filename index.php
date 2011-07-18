@@ -53,12 +53,12 @@ function inBedify($url) {
   // Convert relative URLs to absolute.
   foreach (qp($page, 'link') as $link) {
     if ($link->hasAttr('href') && strpos($link->attr('href'), 'http') === false) {
-      $link->attr('href', $base . $link->attr('href'));
+      $link->attr('href', $base . '/' . ltrim($link->attr('href'), '/'));
     }
   }
   foreach (qp($page, 'script') as $script) {
     if ($script->hasAttr('src') && strpos($script->attr('src'), 'http') === false) {
-      $script->attr('src', $base . $script->attr('src'));
+      $script->attr('src', $base . '/' . ltrim($script->attr('src'), '/'));
     }
   }
   foreach (qp($page, 'style') as $style) {
@@ -68,7 +68,7 @@ function inBedify($url) {
   }
   foreach (qp($page, 'img') as $img) {
     if (strpos($img->attr('src'), 'http') === false) {
-      $img->attr('src', $base . $img->attr('src'));
+      $img->attr('src', $base . '/' . ltrim($img->attr('src'), '/'));
     }
   }
 
