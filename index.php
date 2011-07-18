@@ -52,13 +52,18 @@ function inBedify($url) {
 
   // Convert relative CSS and JS to absolute.
   foreach (qp($page, 'link') as $link) {
-    if (strpos($link->attr('href'), 'http') === false) {
+    if ($link->hasAttr('href') && strpos($link->attr('href'), 'http') === false) {
       $link->attr('href', $base . $link->attr('href'));
     }
   }
   foreach (qp($page, 'script') as $script) {
-    if (strpos($script->attr('src'), 'http') === false) {
+    if ($script->hasAttr('src') && strpos($script->attr('src'), 'http') === false) {
       $script->attr('src', $base . $script->attr('src'));
+    }
+  }
+  foreach (qp($page, 'style') as $style) {
+    if (preg_match('/@import ?["\']\/(.*)/', $style->text(), $matches) && count($matches) > 1) {
+      $style->text('@import "' . $base . '/' . $matches[1]);
     }
   }
 
