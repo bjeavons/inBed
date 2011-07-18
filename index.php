@@ -50,7 +50,7 @@ function inBedify($url) {
   // Check response code @todo
   $base = $url_parts['scheme'] . '://' . $url_parts['host'];
 
-  // Convert relative CSS and JS to absolute.
+  // Convert relative URLs to absolute.
   foreach (qp($page, 'link') as $link) {
     if ($link->hasAttr('href') && strpos($link->attr('href'), 'http') === false) {
       $link->attr('href', $base . $link->attr('href'));
@@ -66,15 +66,20 @@ function inBedify($url) {
       $style->text('@import "' . $base . '/' . $matches[1]);
     }
   }
+  foreach (qp($page, 'img') as $img) {
+    if (strpos($img->attr('src'), 'http') === false) {
+      $img->attr('src', $base . $img->attr('src'));
+    }
+  }
 
   // Rewrite same-domain URLs to run through InBedify.
   foreach (qp($page, 'a') as $a) {
     if (strpos($a->attr('href'), 'http') !== false) {
       // Only rewrite same-domain URLs.
       $host = parse_url($a->attr('href'), PHP_URL_HOST);
-      //if (ltrim($host, '.') == ltrim($url_parts['host'], '.')) { //@todo
+      if ($host == $url_parts['host']) { //@todo
         $a->attr('href', 'http://inbedify.com/' . $a->attr('href'));
-      //}
+      }
     }
     else {
       // Relative URL.
@@ -103,10 +108,14 @@ function inBedElement($qp_element) {
   if ($qp_element->is('a')) {
     $qp_element->find('a');
   }
-  //$text = $qp_element->text();
-  //$text = preg_replace('/(.*)([\!\?\.])$/', '$1 in Bed$2', $text);
-  //$qp_element->text($text);
-  $qp_element->append(' in Bed');
+  // Handle punctuation.
+  $text = $qp_element->text();
+  if (preg_match('/(.*)([\?\.\!\*\)"])+/', $qp_element->text(), $matches)) {
+    $qp_element->text($matches[1] . ' in Bed' . $matches[2]);
+  }
+  else {
+    $qp_element->append(' in Bed');
+  }
 }
 
 function frontPage() {
