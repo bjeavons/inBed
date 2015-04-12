@@ -181,11 +181,11 @@ function frontPage() {
 <div id="content">
 <form method="GET" name="inbedify" action="/">
   <span class="inbedit">You should read</span>
-  <input type="text" name="q" class="domain" id="domain_input" value="talkingpointsmemo.com" onclick="clearDomainInput(this);">
+  <input type="text" name="q" class="domain" id="domain_input" value="nytimes.com" onclick="clearDomainInput(this);">
   <span class="inbedit"><a href="#" onclick="formSubmit();">in bed</a>.</span>
   <input type="submit" style="display: none;">
 </form>
-<p class="cta">Type in any address to InBedify!</p>
+<p class="cta">Type any address into InBedify!</p>
 </div>
 <div class="share">
 <div class="share-button tw"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://inbedify.com" data-text="&quot;in bed&quot; is not just for fortune cookies anymore: " data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
